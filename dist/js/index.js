@@ -2260,6 +2260,17 @@ const __ = {
 
 /***/ }),
 
+/***/ "./src/hamburger.scss":
+/*!****************************!*\
+  !*** ./src/hamburger.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./src/hamburger.tag":
 /*!***************************!*\
   !*** ./src/hamburger.tag ***!
@@ -2274,6 +2285,16 @@ __webpack_require__.r(__webpack_exports__);
 
   'exports': {
     /**
+     *  setting state
+     *
+     *
+     */
+    state:
+    {
+        isOpen: false
+    },
+
+    /**
      *  getting innerHTML and remove
      *
      *
@@ -2287,52 +2308,12 @@ __webpack_require__.r(__webpack_exports__);
     /**
      *  setting innerHTML of navigation
      *
+     *
      */
     onMounted()
     {
         const wrapper = this.$('.hamburger__navigation');
         wrapper.innerHTML = this.content;
-    },
-
-    /**
-     *  setting state
-     *
-     */
-    state: {
-        isOpen: false,
-        items: []
-    },
-
-    /**
-     *
-     *
-     *  @param  {object} event
-     */
-    handleClick(event)
-    {
-        this.handleToggle();
-    },
-
-    /**
-     *
-     *
-     */
-    getIconClasses() {
-        return classNames({
-            active: this.isActive,
-            disabled: this.isDisabled
-        })
-    },
-
-    /**
-     *
-     *
-     */
-    getModalClasses() {
-        return classNames({
-            active: this.isActive,
-            disabled: this.isDisabled
-        })
     },
 
     /**
@@ -2354,7 +2335,7 @@ __webpack_require__.r(__webpack_exports__);
 
   'template': function(template, expressionTypes, bindingTypes, getComponent) {
     return template(
-      '<div class="hamburger"><button expr0 class="button button--hamburger"><i expr1></i></button><div class="hamburger__modal"><nav expr2 class="hamburger__navigation"></nav></div></div>',
+      '<div class="hamburger"><button expr0 class="hamburger__button button button--hamburger"><i expr1></i></button><div expr2><nav class="hamburger__navigation"></nav></div></div>',
       [{
         'redundantAttribute': 'expr0',
         'selector': '[expr0]',
@@ -2376,7 +2357,9 @@ __webpack_require__.r(__webpack_exports__);
           'name': 'class',
 
           'evaluate': function(scope) {
-            return !scope.state.isOpen ? 'icon icon-hamburger-open' : 'icon icon-hamburger-close';
+            return scope.state.isOpen ?
+     'icon icon-hamburger-open':
+     'icon icon-hamburger-close';
           }
         }]
       }, {
@@ -2384,6 +2367,15 @@ __webpack_require__.r(__webpack_exports__);
         'selector': '[expr2]',
 
         'expressions': [{
+          'type': expressionTypes.ATTRIBUTE,
+          'name': 'class',
+
+          'evaluate': function(scope) {
+            return scope.state.isOpen ?
+       'hamburger__modal hamburger__modal--open':
+       'hamburger__modal hamburger__modal--closed';
+          }
+        }, {
           'type': expressionTypes.EVENT,
           'name': 'onclick',
 
@@ -2401,13 +2393,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!************************!*\
-  !*** multi ./index.js ***!
-  \************************/
+/*!*********************************************!*\
+  !*** multi ./index.js ./src/hamburger.scss ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/super-duper-components/hamburger/index.js */"./index.js");
+__webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/super-duper-components/hamburger/index.js */"./index.js");
+module.exports = __webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/super-duper-components/hamburger/src/hamburger.scss */"./src/hamburger.scss");
 
 
 /***/ })

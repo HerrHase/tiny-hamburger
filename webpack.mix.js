@@ -26,4 +26,5 @@ mix.webpackConfig({
     ]}
 });
 
-mix.js('index.js', 'dist/js');
+mix.js('index.js', 'dist/js')
+mix.sass('src/hamburger.scss', 'dist/css');

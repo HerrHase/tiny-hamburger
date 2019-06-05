@@ -1,15 +1,29 @@
 <hamburger>
     <div class="hamburger">
-        <button class="button button--hamburger" onclick={ handleToggle }>
-            <i class={ !state.isOpen ? 'icon icon-hamburger-open' : 'icon icon-hamburger-close' } />
+        <button class="hamburger__button button button--hamburger" onclick={ handleToggle }>
+            <i class={ state.isOpen ?
+                'icon icon-hamburger-open':
+                'icon icon-hamburger-close' } />
         </button>
-        <div class="hamburger__modal">
-            <nav class="hamburger__navigation" onclick={ handleToggle }></nav>
+        <div class={ state.isOpen ?
+                'hamburger__modal hamburger__modal--open':
+                'hamburger__modal hamburger__modal--closed' } onclick={ handleToggle }>
+            <nav class="hamburger__navigation"></nav>
         </div>
     </div>
 
     <script>
         export default {
+
+            /**
+             *  setting state
+             *
+             *
+             */
+            state:
+            {
+                isOpen: false
+            },
 
             /**
              *  getting innerHTML and remove
@@ -25,41 +39,12 @@
             /**
              *  setting innerHTML of navigation
              *
+             *
              */
             onMounted()
             {
                 const wrapper = this.$('.hamburger__navigation');
                 wrapper.innerHTML = this.content;
-            },
-
-            /**
-             *  setting state
-             *
-             */
-            state: {
-                isOpen: false
-            },
-
-            /**
-             *
-             *
-             */
-            getIconClasses() {
-                return classNames({
-                    active: this.isActive,
-                    disabled: this.isDisabled
-                })
-            },
-
-            /**
-             *
-             *
-             */
-            getModalClasses() {
-                return classNames({
-                    active: this.isActive,
-                    disabled: this.isDisabled
-                })
             },
 
             /**

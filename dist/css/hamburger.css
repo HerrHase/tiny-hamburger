@@ -1,0 +1,33 @@
+.hamburger__modal {
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s;
+}
+
+.hamburger__modal--open {
+  max-height: 250px;
+}
+
+.hamburger__button {
+  border: 0;
+  background: transparent;
+}
+
+.hamburger__button:hover {
+  cursor: pointer;
+}
+
+.hamburger__button .icon-hamburger-open:before,
+.hamburger__button .icon-hamburger-close:before {
+  font-size: 24px;
+}
+
+.hamburger__button .icon-hamburger-open:before {
+  content: "+";
+}
+
+.hamburger__button .icon-hamburger-close:before {
+  content: "-";
+}
+
