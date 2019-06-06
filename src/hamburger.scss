@@ -4,35 +4,11 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s;
-
-        &--open {
-            max-height: 250px;
-        }
     }
 
     &__button {
-        border: 0;
-        background: transparent;
-
         &:hover {
             cursor: pointer;
         }
-
-        .icon-hamburger-open:before,
-        .icon-hamburger-close:before {
-            font-size: 24px;
-        }
-
-        .icon-hamburger-open:before {
-            content: "+";
-        }
-
-        .icon-hamburger-close:before {
-            content: "-";
-        }
-    }
-
-    &__navigation {
-
     }
 }

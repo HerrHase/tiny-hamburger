@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.webpackConfig({
     module: {
 		rules: [{
-			test: /\.tag$/,
+			test: /\.riot$/,
 			exclude: /node_modules/,
 			use: [{
 				loader: '@riotjs/webpack-loader',

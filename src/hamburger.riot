@@ -5,24 +5,44 @@
                 'icon icon-hamburger-open':
                 'icon icon-hamburger-close' } />
         </button>
-        <div class={ state.isOpen ?
+        <div style="max-height: { state.modalStyles.maxHeight }"
+             class={ state.isOpen ?
                 'hamburger__modal hamburger__modal--open':
                 'hamburger__modal hamburger__modal--closed' } onclick={ handleToggle }>
-            <nav class="hamburger__navigation"></nav>
+            <div class="hamburger__inner"></div>
         </div>
     </div>
 
     <script>
+
+        /**
+         *  Hamburger.riot
+         *
+         *  Tiny Component for mobile navigation.
+         *
+         *  <hamburger>
+         *      <ul>
+         *          <li><a href="#">Home</a></li>
+         *          <li><a href="#">Blog</a></li>
+         *      </ul>
+         *  </hamburger>
+         *
+         *  @author Björn Hase
+         *  @license http://opensource.org/licenses/MIT The MIT License
+         *  @link https://gitlab.tentakelfabrik.de/tentakelfabrik/tiny-components/hamburger Gitlab Repository
+         *
+         */
+
         export default {
 
             /**
-             *  setting state
              *
              *
              */
             state:
             {
-                isOpen: false
+                isOpen: false,
+                modalStyles: { 'max-height': 0 }
             },
 
             /**
@@ -37,18 +57,18 @@
             }
 
             /**
-             *  setting innerHTML of navigation
+             *  setting innerHTML
              *
              *
              */
             onMounted()
             {
-                const wrapper = this.$('.hamburger__navigation');
+                const wrapper = this.$('.hamburger__inner');
                 wrapper.innerHTML = this.content;
             },
 
             /**
-             *  toggle state
+             *  toggle modal
              *
              *
              */
@@ -56,8 +76,10 @@
             {
                 if (this.state.isOpen === true) {
                     this.state.isOpen = false;
+                    this.state.modalStyles.maxHeight = 0;
                 } else {
                     this.state.isOpen = true;
+                    this.state.modalStyles.maxHeight = this.$('.hamburger__inner').getBoundingClientRect().height + 'px';
                 }
 
                 this.update();

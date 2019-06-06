@@ -96,10 +96,10 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! riot */ "./node_modules/riot/riot.esm.js");
-/* harmony import */ var _src_hamburger_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/hamburger.tag */ "./src/hamburger.tag");
+/* harmony import */ var _src_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/hamburger.riot */ "./src/hamburger.riot");
 
 
-riot__WEBPACK_IMPORTED_MODULE_0__["register"]('hamburger', _src_hamburger_tag__WEBPACK_IMPORTED_MODULE_1__["default"]);
+riot__WEBPACK_IMPORTED_MODULE_0__["register"]('hamburger', _src_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__["default"]);
 riot__WEBPACK_IMPORTED_MODULE_0__["mount"]('hamburger');
 
 /***/ }),
@@ -2260,21 +2260,10 @@ const __ = {
 
 /***/ }),
 
-/***/ "./src/hamburger.scss":
+/***/ "./src/hamburger.riot":
 /*!****************************!*\
-  !*** ./src/hamburger.scss ***!
+  !*** ./src/hamburger.riot ***!
   \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./src/hamburger.tag":
-/*!***************************!*\
-  !*** ./src/hamburger.tag ***!
-  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2285,13 +2274,13 @@ __webpack_require__.r(__webpack_exports__);
 
   'exports': {
     /**
-     *  setting state
      *
      *
      */
     state:
     {
-        isOpen: false
+        isOpen: false,
+        modalStyles: { 'max-height': 0 }
     },
 
     /**
@@ -2306,18 +2295,18 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     /**
-     *  setting innerHTML of navigation
+     *  setting innerHTML
      *
      *
      */
     onMounted()
     {
-        const wrapper = this.$('.hamburger__navigation');
+        const wrapper = this.$('.hamburger__inner');
         wrapper.innerHTML = this.content;
     },
 
     /**
-     *  toggle state
+     *  toggle modal
      *
      *
      */
@@ -2325,8 +2314,10 @@ __webpack_require__.r(__webpack_exports__);
     {
         if (this.state.isOpen === true) {
             this.state.isOpen = false;
+            this.state.modalStyles.maxHeight = 0;
         } else {
             this.state.isOpen = true;
+            this.state.modalStyles.maxHeight = this.$('.hamburger__inner').getBoundingClientRect().height + 'px';
         }
 
         this.update();
@@ -2335,7 +2326,7 @@ __webpack_require__.r(__webpack_exports__);
 
   'template': function(template, expressionTypes, bindingTypes, getComponent) {
     return template(
-      '<div class="hamburger"><button expr0 class="hamburger__button button button--hamburger"><i expr1></i></button><div expr2><nav class="hamburger__navigation"></nav></div></div>',
+      '<div class="hamburger"><button expr0 class="hamburger__button button button--hamburger"><i expr1></i></button><div expr2><div class="hamburger__inner"></div></div></div>',
       [{
         'redundantAttribute': 'expr0',
         'selector': '[expr0]',
@@ -2368,6 +2359,13 @@ __webpack_require__.r(__webpack_exports__);
 
         'expressions': [{
           'type': expressionTypes.ATTRIBUTE,
+          'name': 'style',
+
+          'evaluate': function(scope) {
+            return ['max-height: ', scope.state.modalStyles.maxHeight].join('');
+          }
+        }, {
+          'type': expressionTypes.ATTRIBUTE,
           'name': 'class',
 
           'evaluate': function(scope) {
@@ -2389,6 +2387,17 @@ __webpack_require__.r(__webpack_exports__);
 
   'name': 'hamburger'
 });
+
+/***/ }),
+
+/***/ "./src/hamburger.scss":
+/*!****************************!*\
+  !*** ./src/hamburger.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
