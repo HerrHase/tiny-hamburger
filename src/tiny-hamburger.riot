@@ -1,15 +1,11 @@
-<hamburger>
-    <div class="hamburger">
-        <button class="hamburger__button button button--hamburger" onclick={ handleToggle }>
-            <i class={ state.isOpen ?
-                'icon icon-hamburger-open':
-                'icon icon-hamburger-close' } />
+<tiny-hamburger>
+    <div class="tiny-hamburger">
+        <button class="tiny-hamburger__button button button--tiny-hamburger" onclick={ handleToggle }>
+            <i class={ getIconClasses() } />
         </button>
-        <div style="max-height: { state.modalStyles.maxHeight }"
-             class={ state.isOpen ?
-                'hamburger__modal hamburger__modal--open':
-                'hamburger__modal hamburger__modal--closed' } onclick={ handleToggle }>
-            <div class="hamburger__inner"></div>
+        <div style="max-height: { state.maxHeight }"
+             class={ getModalClasses() } onclick={ handleToggle }>
+            <div class="tiny-hamburger__inner"></div>
         </div>
     </div>
 
@@ -20,16 +16,16 @@
          *
          *  Tiny Component for mobile navigation.
          *
-         *  <hamburger>
+         *  <tiny-hamburger>
          *      <ul>
          *          <li><a href="#">Home</a></li>
          *          <li><a href="#">Blog</a></li>
          *      </ul>
-         *  </hamburger>
+         *  </tiny-hamburger>
          *
          *  @author Björn Hase
          *  @license http://opensource.org/licenses/MIT The MIT License
-         *  @link https://gitlab.tentakelfabrik.de/tentakelfabrik/tiny-components/hamburger Gitlab Repository
+         *  @link https://gitlab.tentakelfabrik.de/tentakelfabrik/tiny-components/tiny-hamburger Gitlab Repository
          *
          */
 
@@ -42,7 +38,7 @@
             state:
             {
                 isOpen: false,
-                modalStyles: { 'max-height': 0 }
+                maxHeight: 0,
             },
 
             /**
@@ -54,6 +50,8 @@
             {
                 this.content = this.root.innerHTML;
                 this.root.innerHTML = '';
+
+                console.log(this.content);
             }
 
             /**
@@ -63,8 +61,30 @@
              */
             onMounted()
             {
-                const wrapper = this.$('.hamburger__inner');
+                const wrapper = this.$('.tiny-hamburger__inner');
                 wrapper.innerHTML = this.content;
+            },
+
+            /**
+             *
+             *
+             */
+            getIconClasses()
+            {
+                return this.state.isOpen ?
+                    'icon icon-tiny-hamburger-open':
+                    'icon icon-tiny-hamburger-close'
+            },
+
+            /**
+             *
+             *
+             */
+            getModalClasses()
+            {
+                return this.state.isOpen ?
+                    'tiny-hamburger__modal tiny-hamburger__modal--open' :
+                    'tiny-hamburger__modal tiny-hamburger__modal--closed';
             },
 
             /**
@@ -76,14 +96,14 @@
             {
                 if (this.state.isOpen === true) {
                     this.state.isOpen = false;
-                    this.state.modalStyles.maxHeight = 0;
+                    this.state.maxHeight = 0;
                 } else {
                     this.state.isOpen = true;
-                    this.state.modalStyles.maxHeight = this.$('.hamburger__inner').getBoundingClientRect().height + 'px';
+                    this.state.maxHeight = this.$('.tiny-hamburger__inner').getBoundingClientRect().height + 'px';
                 }
 
                 this.update();
             }
         }
     </script>
-</hamburger>
+</tiny-hamburger>

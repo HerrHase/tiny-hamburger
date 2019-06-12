@@ -1,3 +1,4 @@
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 const mix = require('laravel-mix');
 
 /*
@@ -23,8 +24,20 @@ mix.webpackConfig({
 				}
 			}]
 		}
-    ]}
+    ]},
+    plugins: [
+       new ReplaceInFileWebpackPlugin([{
+           dir: 'dist/css',
+           files: ['fonts.css'],
+           rules: [{
+               search: /PxPlus_IBM_VGA8/ig,
+               replace: '/fonts/PxPlus_IBM_VGA8'
+           }]
+       }])
+    ]
 });
 
 mix.js('index.js', 'dist/js')
-mix.sass('src/hamburger.scss', 'dist/css');
+mix.copy('src/fonts/stylesheet.css', 'dist/css/fonts.css');
+mix.sass('src/demo.scss', 'dist/css');
+mix.copy('src/fonts', 'dist/fonts');

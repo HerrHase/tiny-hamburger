@@ -1,0 +1,11 @@
+.hamburger__modal {
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s;
+}
+
+.hamburger__button:hover {
+  cursor: pointer;
+}
+

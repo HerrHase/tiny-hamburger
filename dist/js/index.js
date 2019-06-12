@@ -96,11 +96,11 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var riot__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! riot */ "./node_modules/riot/riot.esm.js");
-/* harmony import */ var _src_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/hamburger.riot */ "./src/hamburger.riot");
+/* harmony import */ var _src_tiny_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/tiny-hamburger.riot */ "./src/tiny-hamburger.riot");
 
 
-riot__WEBPACK_IMPORTED_MODULE_0__["register"]('hamburger', _src_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__["default"]);
-riot__WEBPACK_IMPORTED_MODULE_0__["mount"]('hamburger');
+riot__WEBPACK_IMPORTED_MODULE_0__["register"]('tiny-hamburger', _src_tiny_hamburger_riot__WEBPACK_IMPORTED_MODULE_1__["default"]);
+riot__WEBPACK_IMPORTED_MODULE_0__["mount"]('tiny-hamburger');
 
 /***/ }),
 
@@ -2260,10 +2260,21 @@ const __ = {
 
 /***/ }),
 
-/***/ "./src/hamburger.riot":
-/*!****************************!*\
-  !*** ./src/hamburger.riot ***!
-  \****************************/
+/***/ "./src/demo.scss":
+/*!***********************!*\
+  !*** ./src/demo.scss ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./src/tiny-hamburger.riot":
+/*!*********************************!*\
+  !*** ./src/tiny-hamburger.riot ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2280,7 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
     state:
     {
         isOpen: false,
-        modalStyles: { 'max-height': 0 }
+        maxHeight: 0,
     },
 
     /**
@@ -2292,6 +2303,8 @@ __webpack_require__.r(__webpack_exports__);
     {
         this.content = this.root.innerHTML;
         this.root.innerHTML = '';
+
+        console.log(this.content);
     },
 
     /**
@@ -2301,8 +2314,30 @@ __webpack_require__.r(__webpack_exports__);
      */
     onMounted()
     {
-        const wrapper = this.$('.hamburger__inner');
+        const wrapper = this.$('.tiny-hamburger__inner');
         wrapper.innerHTML = this.content;
+    },
+
+    /**
+     *
+     *
+     */
+    getIconClasses()
+    {
+        return this.state.isOpen ?
+            'icon icon-tiny-hamburger-open':
+            'icon icon-tiny-hamburger-close'
+    },
+
+    /**
+     *
+     *
+     */
+    getModalClasses()
+    {
+        return this.state.isOpen ?
+            'tiny-hamburger__modal tiny-hamburger__modal--open' :
+            'tiny-hamburger__modal tiny-hamburger__modal--closed';
     },
 
     /**
@@ -2314,10 +2349,10 @@ __webpack_require__.r(__webpack_exports__);
     {
         if (this.state.isOpen === true) {
             this.state.isOpen = false;
-            this.state.modalStyles.maxHeight = 0;
+            this.state.maxHeight = 0;
         } else {
             this.state.isOpen = true;
-            this.state.modalStyles.maxHeight = this.$('.hamburger__inner').getBoundingClientRect().height + 'px';
+            this.state.maxHeight = this.$('.tiny-hamburger__inner').getBoundingClientRect().height + 'px';
         }
 
         this.update();
@@ -2326,7 +2361,7 @@ __webpack_require__.r(__webpack_exports__);
 
   'template': function(template, expressionTypes, bindingTypes, getComponent) {
     return template(
-      '<div class="hamburger"><button expr0 class="hamburger__button button button--hamburger"><i expr1></i></button><div expr2><div class="hamburger__inner"></div></div></div>',
+      '<div class="tiny-hamburger"><button expr0 class="tiny-hamburger__button button button--tiny-hamburger"><i expr1></i></button><div expr2><div class="tiny-hamburger__inner"></div></div></div>',
       [{
         'redundantAttribute': 'expr0',
         'selector': '[expr0]',
@@ -2348,9 +2383,7 @@ __webpack_require__.r(__webpack_exports__);
           'name': 'class',
 
           'evaluate': function(scope) {
-            return scope.state.isOpen ?
-     'icon icon-hamburger-open':
-     'icon icon-hamburger-close';
+            return scope.getIconClasses();
           }
         }]
       }, {
@@ -2362,16 +2395,14 @@ __webpack_require__.r(__webpack_exports__);
           'name': 'style',
 
           'evaluate': function(scope) {
-            return ['max-height: ', scope.state.modalStyles.maxHeight].join('');
+            return ['max-height: ', scope.state.maxHeight].join('');
           }
         }, {
           'type': expressionTypes.ATTRIBUTE,
           'name': 'class',
 
           'evaluate': function(scope) {
-            return scope.state.isOpen ?
-       'hamburger__modal hamburger__modal--open':
-       'hamburger__modal hamburger__modal--closed';
+            return scope.getModalClasses();
           }
         }, {
           'type': expressionTypes.EVENT,
@@ -2385,31 +2416,20 @@ __webpack_require__.r(__webpack_exports__);
     );
   },
 
-  'name': 'hamburger'
+  'name': 'tiny-hamburger'
 });
 
 /***/ }),
 
-/***/ "./src/hamburger.scss":
-/*!****************************!*\
-  !*** ./src/hamburger.scss ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*********************************************!*\
-  !*** multi ./index.js ./src/hamburger.scss ***!
-  \*********************************************/
+/*!****************************************!*\
+  !*** multi ./index.js ./src/demo.scss ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/super-duper-components/hamburger/index.js */"./index.js");
-module.exports = __webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/super-duper-components/hamburger/src/hamburger.scss */"./src/hamburger.scss");
+__webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/tiny-components/hamburger/index.js */"./index.js");
+module.exports = __webpack_require__(/*! /home/herrhase/Workspace/tentakelfabrik/tiny-components/hamburger/src/demo.scss */"./src/demo.scss");
 
 
 /***/ })
