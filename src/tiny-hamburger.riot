@@ -4,7 +4,7 @@
             <i class={ getIconClasses() } />
         </button>
         <div style="max-height: { state.maxHeight }"
-             class={ getModalClasses() } onclick={ handleToggle }>
+             class={ getModalClasses() }>
             <div class="tiny-hamburger__inner"></div>
         </div>
     </div>
@@ -50,9 +50,7 @@
             {
                 this.content = this.root.innerHTML;
                 this.root.innerHTML = '';
-
-                console.log(this.content);
-            }
+            },
 
             /**
              *  setting innerHTML
@@ -88,6 +86,17 @@
             },
 
             /**
+             *
+             *
+             */
+            handleClick(event)
+            {
+                if (!this.root.contains(event.target)) {
+                    this.handleToggle();
+                }
+            },
+
+            /**
              *  toggle modal
              *
              *
@@ -97,9 +106,15 @@
                 if (this.state.isOpen === true) {
                     this.state.isOpen = false;
                     this.state.maxHeight = 0;
+
+                    // remove event for click outside navigation
+                    document.removeEventListener('click', this.handleClick.bind(this));
                 } else {
                     this.state.isOpen = true;
                     this.state.maxHeight = this.$('.tiny-hamburger__inner').getBoundingClientRect().height + 'px';
+
+                    // add event for click outside navigation
+                    document.addEventListener('click', this.handleClick.bind(this));
                 }
 
                 this.update();
