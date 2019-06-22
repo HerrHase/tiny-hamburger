@@ -62,16 +62,20 @@ a {
     color: $link-color;
 }
 
-.icon-tiny-hamburger-open {
+.icon-tiny-hamburger-open,  .icon-tiny-hamburger-close {
+    position: absolute;
+    transition: transform .3s;
     &:after {
         content: '\2bc5';
     }
 }
 
+.icon-tiny-hamburger-open {
+    transform: rotate(0deg);
+}
+
 .icon-tiny-hamburger-close {
-    &:after {
-        content: '\2bc6';
-    }
+    transform: rotate(180deg);
 }
 
 /**

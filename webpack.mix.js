@@ -37,7 +37,9 @@ mix.webpackConfig({
     ]
 });
 
-mix.js('index.js', 'dist/js')
+mix.js('demo-386-left.js', 'dist/js')
+mix.js('demo-386-top.js', 'dist/js')
+mix.js('demo-flat-left.js', 'dist/js')
 mix.copy('src/fonts/stylesheet.css', 'dist/css/fonts.css');
 mix.sass('src/demo-386-left.scss', 'dist/css');
 mix.sass('src/demo-386-top.scss', 'dist/css');

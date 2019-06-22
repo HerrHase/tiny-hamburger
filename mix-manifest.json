@@ -1,7 +1,9 @@
 {
-    "/dist/js/index.js": "/dist/js/index.js",
+    "/dist/js/demo-386-left.js": "/dist/js/demo-386-left.js",
     "/dist/css/demo-386-left.css": "/dist/css/demo-386-left.css",
     "/dist/css/demo-386-top.css": "/dist/css/demo-386-top.css",
     "/dist/css/demo-flat-left.css": "/dist/css/demo-flat-left.css",
+    "/dist/js/demo-386-top.js": "/dist/js/demo-386-top.js",
+    "/dist/js/demo-flat-left.js": "/dist/js/demo-flat-left.js",
     "/dist/css/fonts.css": "/dist/css/fonts.css"
 }

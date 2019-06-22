@@ -3,7 +3,7 @@
         <button class="tiny-hamburger__button button button--tiny-hamburger" onclick={ handleToggle }>
             <i class={ getIconClasses() } />
         </button>
-        <div style="max-height: { state.maxHeight }"
+        <div style="{ getStyles() }"
              class={ getModalClasses() }>
             <div class="tiny-hamburger__inner"></div>
         </div>
@@ -12,7 +12,7 @@
     <script>
 
         /**
-         *  Hamburger.riot
+         *  tiny-hamburger.riot
          *
          *  Tiny Component for mobile navigation.
          *
@@ -29,8 +29,8 @@
          *
          */
 
-        export default {
-
+        export default
+        {
             /**
              *
              *
@@ -38,7 +38,7 @@
             state:
             {
                 isOpen: false,
-                maxHeight: 0,
+                animate: null
             },
 
             /**
@@ -48,8 +48,23 @@
              */
             onBeforeMount()
             {
-                this.content = this.root.innerHTML;
-                this.root.innerHTML = '';
+                // getting helper and add component
+                this.state.animate = this.props.animate;
+                this.state.animate.setComponent(this);
+
+                this.content = this.root.innerHTML
+                this.root.innerHTML = ''
+            },
+
+            /**
+             *  getting innerHTML and remove
+             *
+             *
+             */
+            onBeforeUnmount()
+            {
+                document.addEventListener('click', this.handleClick.bind(this));
+                this.$('.tiny-hamburger__inner a').removeEventListener('click', this.handleClose.bind(this));
             },
 
             /**
@@ -61,6 +76,24 @@
             {
                 const wrapper = this.$('.tiny-hamburger__inner');
                 wrapper.innerHTML = this.content;
+
+                this.state.animate.prepareMounted();
+                this.update();
+
+                // adding for outer click and all a-tags click event to close
+                document.addEventListener('click', this.handleClick.bind(this))
+                this.$$('.tiny-hamburger__inner a').forEach((a) => {
+                    a.addEventListener('click', this.handleClose.bind(this));
+                });
+            },
+
+            /**
+             *
+             *  @return {string}
+             */
+            getStyles()
+            {
+                return this.state.animate.getStyles();
             },
 
             /**
@@ -70,8 +103,8 @@
             getIconClasses()
             {
                 return this.state.isOpen ?
-                    'icon icon-tiny-hamburger-open':
-                    'icon icon-tiny-hamburger-close'
+                    'icon icon-tiny-hamburger-close' :
+                    'icon icon-tiny-hamburger-open';
             },
 
             /**
@@ -92,8 +125,32 @@
             handleClick(event)
             {
                 if (!this.root.contains(event.target)) {
-                    this.handleToggle();
+                    this.handleClose();
                 }
+            },
+
+            /**
+             *
+             *
+             */
+            handleOpen()
+            {
+                this.state.animate.prepareOpen();
+                this.state.isOpen = true;
+
+                this.update();
+            },
+
+            /**
+             *
+             *
+             */
+            handleClose()
+            {
+                this.state.animate.prepareClose();
+                this.state.isOpen = false;
+
+                this.update();
             },
 
             /**
@@ -104,20 +161,10 @@
             handleToggle()
             {
                 if (this.state.isOpen === true) {
-                    this.state.isOpen = false;
-                    this.state.maxHeight = 0;
-
-                    // remove event for click outside navigation
-                    document.removeEventListener('click', this.handleClick.bind(this));
+                    this.handleClose();
                 } else {
-                    this.state.isOpen = true;
-                    this.state.maxHeight = this.$('.tiny-hamburger__inner').getBoundingClientRect().height + 'px';
-
-                    // add event for click outside navigation
-                    document.addEventListener('click', this.handleClick.bind(this));
+                    this.handleOpen();
                 }
-
-                this.update();
             }
         }
     </script>
