@@ -49,6 +49,7 @@ a {
  *
  */
 .panel {
+    padding: 4px 0;
     background-color: $background-contrast-color;
 }
 
@@ -64,7 +65,10 @@ a {
 
 .icon-tiny-hamburger-open,  .icon-tiny-hamburger-close {
     position: absolute;
-    transition: transform .3s;
+    top: 0;
+    transition: transform .2s;
+    margin: 3px;
+
     &:after {
         content: '\2bc5';
     }
@@ -85,7 +89,7 @@ a {
  */
 .tiny-hamburger {
     &__inner {
-        padding: 7px 6px;
+        padding: 4px 8px 5px;
     }
 
     // modal with animation

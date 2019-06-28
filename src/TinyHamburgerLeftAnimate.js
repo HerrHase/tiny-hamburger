@@ -42,10 +42,10 @@ export default class TinyHamburgerLeftAnimate extends TinyHamburgerAnimate
 
     /**
      *
-     *  
+     *
      */
     prepareClose()
     {
-        this.left = -(this.component.$('.tiny-hamburger__inner').offsetWidth);
+        this.left = null;
     }
 }
