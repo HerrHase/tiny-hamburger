@@ -103,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 
 riot__WEBPACK_IMPORTED_MODULE_0__["register"]('tiny-hamburger', _src_TinyHamburger_riot__WEBPACK_IMPORTED_MODULE_1__["default"]);
 riot__WEBPACK_IMPORTED_MODULE_0__["mount"]('tiny-hamburger', {
-  'animate': new TinyHamburgerLeftAnimate()
+  'animate': new _src_TinyHamburgerLeftAnimate_js__WEBPACK_IMPORTED_MODULE_2__["default"]()
 });
 
 /***/ }),
