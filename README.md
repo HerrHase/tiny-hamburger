@@ -1,7 +1,8 @@
 # Tiny Hamburger
 
-Part of Tiny Components, small Helpers for Frontend Development. This is a Hamburger Menu.
-It used the Framework [RiotJS v4](https://riot.js.org/).
+Part of Tiny Components, this is one of many Components for Frontend Development. It used the Framework [RiotJS v4](https://riot.js.org/).
+
+This Component is a Hamburger Menu.
 
 ## Usage
 
@@ -15,4 +16,16 @@ It used the Framework [RiotJS v4](https://riot.js.org/).
         </ul>
     </nav>
 </tiny-hamburger>
+```
+
+## Animations
+
+Use the Class TinyHamburgerAnimate to create your own Animations. You can inject
+your Animation Class while Mounting the Component.
+
+```js
+// adding component with animate object
+riot.mount('tiny-hamburger', {
+    'animate': new TinyHamburgerLeftAnimate()
+});
 ```

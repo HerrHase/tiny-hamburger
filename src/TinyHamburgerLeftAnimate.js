@@ -1,10 +1,13 @@
 import TinyHamburgerAnimate from './TinyHamburgerAnimate';
 
 /**
+ * TinyHamburgerLeftAnimate
  *
+ * Animation for a Panel that slides left in Screen
  *
- *
- *
+ * @author Björn Hase
+ * @license http://opensource.org/licenses/MIT The MIT License
+ * @link https://gitlab.tentakelfabrik.de/tentakelfabrik/tiny-components/tiny-hamburger GitLab Repository
  */
 export default class TinyHamburgerLeftAnimate extends TinyHamburgerAnimate
 {
@@ -19,20 +22,23 @@ export default class TinyHamburgerLeftAnimate extends TinyHamburgerAnimate
     }
 
     /**
+     *  getting styles
      *
-     *  @return {string}
+     *  @return {mixed}
      */
     getStyles()
     {
+        let style = false;
+
         if (this.left !== null) {
-            return 'left: ' + this.left + 'px';
+            style = 'left: ' + this.left + 'px';
         }
 
-        return false;
+        return style;
     }
 
     /**
-     *
+     *  to open set left to 0
      *
      */
     prepareOpen()
@@ -41,7 +47,8 @@ export default class TinyHamburgerLeftAnimate extends TinyHamburgerAnimate
     }
 
     /**
-     *
+     *  to close set left to null,
+     *  to use style for css-file
      *
      */
     prepareClose()

@@ -1,7 +1,7 @@
 {
     "name": "hamburger",
     "version": "1.0.0",
-    "description": "Hamburger Menu with RiotJS",
+    "description": "Hamburger Menu with RiotJS, part of Tiny-Components",
     "main": "index.js",
     "scripts": {
         "dev": "npm run development",

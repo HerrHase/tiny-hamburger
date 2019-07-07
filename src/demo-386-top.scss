@@ -1,12 +1,19 @@
+/**
+ * variables
+ *
+ */
+
 $text-color: #000;
 $link-color: #fefe5b;
 $background-color: #000084;
 $background-contrast-color: #bbbbbb;
 
+
 /**
- * html elements
+ * default elements
  *
  */
+
 body {
     color: $text-color;
     background-color: $background-color;
@@ -14,6 +21,22 @@ body {
     font-style: normal;
     font-size: 1.2rem;
 }
+
+*:first-letter {
+    color: $link-color;
+}
+
+a {
+    color: $text-color;
+    text-decoration: none;
+}
+
+
+/**
+ * navigation
+ *
+ *
+ */
 
 nav {
     ul {
@@ -27,7 +50,7 @@ nav {
             padding: 0.1em;
             margin: -0.1em;
 
-            &:hover {
+            &:hover, &.current {
                 color: #fff;
                 background-color: $text-color;
             }
@@ -35,29 +58,25 @@ nav {
     }
 }
 
-*:first-letter {
-    color: $link-color;
-}
-
-a {
-    color: $text-color;
-    text-decoration: none;
-}
 
 /**
  * panel
  *
+ *
  */
+
 .panel {
-    padding: 4px 0;
+    padding: 6px 0;
     background-color: $background-contrast-color;
 }
+
 
 /**
  * icons
  *
  *
  */
+
 [class^="icon-"], [class*=" icon-"] {
     font-style: normal;
     color: $link-color;
@@ -82,11 +101,13 @@ a {
     transform: rotate(180deg);
 }
 
+
 /**
  * tiny-tiny-hamburger
  *
  *
  */
+
 .tiny-hamburger {
     &__inner {
         padding: 4px 8px 5px;

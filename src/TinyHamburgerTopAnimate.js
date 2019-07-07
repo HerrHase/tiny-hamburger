@@ -1,16 +1,20 @@
 import TinyHamburgerAnimate from './TinyHamburgerAnimate';
 
 /**
+ * TinyHamburgerTopAnimate
  *
+ * Animation for a Panel that slides to bottom,
+ * the height is the max height of the content
  *
- *
- *
+ * @author Björn Hase
+ * @license http://opensource.org/licenses/MIT The MIT License
+ * @link https://gitlab.tentakelfabrik.de/tentakelfabrik/tiny-components/tiny-hamburger GitLab Repository
  */
 export default class TinyHamburgerTopAnimate extends TinyHamburgerAnimate
 {
     /**
      *
-     *  @param {[type]} component [description]
+     *
      */
     constructor()
     {
@@ -19,8 +23,9 @@ export default class TinyHamburgerTopAnimate extends TinyHamburgerAnimate
     }
 
     /**
+     * set max-height
      *
-     *  @return {[type]} [description]
+     * @return {string}
      */
     getStyles()
     {
@@ -28,8 +33,8 @@ export default class TinyHamburgerTopAnimate extends TinyHamburgerAnimate
     }
 
     /**
+     * set height of content
      *
-     *  @return {[type]} [description]
      */
     prepareOpen()
     {
@@ -38,8 +43,8 @@ export default class TinyHamburgerTopAnimate extends TinyHamburgerAnimate
     }
 
     /**
+     * set height to 0
      *
-     *  @return {[type]} [description]
      */
     prepareClose()
     {
