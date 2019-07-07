@@ -33,6 +33,13 @@ mix.webpackConfig({
                search: /PxPlus_IBM_VGA8/ig,
                replace: '/fonts/PxPlus_IBM_VGA8'
            }]
+       },{
+           dir: 'dist/css',
+           files: ['icomoon.css'],
+           rules: [{
+               search: /fonts\/icomoon/ig,
+               replace: '/fonts/icomoon'
+           }]
        }])
     ]
 });
@@ -45,3 +52,5 @@ mix.sass('src/demo-386-left.scss', 'dist/css');
 mix.sass('src/demo-386-top.scss', 'dist/css');
 mix.sass('src/demo-flat-left.scss', 'dist/css');
 mix.copy('src/fonts', 'dist/fonts');
+mix.styles('src/icomoon/style.css', 'dist/css/icomoon.css')
+mix.copy('src/icomoon/fonts', 'dist/fonts');
