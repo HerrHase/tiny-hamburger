@@ -24,7 +24,6 @@ Use the Class TinyHamburgerAnimate to create your own Animations. You can inject
 your Animation Class while Mounting the Component.
 
 ```js
-// adding component with animate object
 riot.mount('tiny-hamburger', {
     'animate': new TinyHamburgerLeftAnimate()
 });
