@@ -2,7 +2,7 @@
 
 Part of Tiny Components, this is one of many Components for Frontend Development. It used the Framework [RiotJS v4](https://riot.js.org/).
 
-This Component is a Hamburger Menu.
+This Component is a Hamburger Menu. ([Demo](https://tiny-hamburger.tentakelfabrik.de))
 
 ## Usage
 
